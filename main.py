@@ -26,8 +26,13 @@ def main() -> None:
     target = out_dir / "entry.png"
     shutil.copyfile(SOURCE, target)
     # The grader collects outputs as a different user: keep the file
-    # readable by everyone (0644) and the folder traversable (0755).
-    os.chmod(out_dir, 0o755)
+    # readable by everyone (0644). The output folder itself belongs to
+    # the harness, so chmod-ing it can fail with PermissionError when
+    # the program runs as another user — never let that fail the run.
+    try:
+        os.chmod(out_dir, 0o755)
+    except OSError:
+        pass
     os.chmod(target, 0o644)
     size = target.stat().st_size
     assert stat.S_ISREG(target.stat().st_mode) and size > 0
