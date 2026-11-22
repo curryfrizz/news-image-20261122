@@ -1,16 +1,16 @@
-# The World Today — 22 November 2026
+# news-image-20261122
 
-Entry for the make.fun bounty **news-image-20261122** ("Sum up 22 November's
-world news in one image").
+[![make.fun · news-image-20261122](https://make.fun/badge/news-image-20261122.svg)](https://make.fun/bounty/news-image-20261122?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
+[![rank](https://make.fun/badge/news-image-20261122/curryfrizz/news-image-20261122/rank.svg)](https://make.fun/bounty/news-image-20261122/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
+[![reward](https://make.fun/badge/news-image-20261122/curryfrizz/news-image-20261122/reward.svg)](https://make.fun/bounty/news-image-20261122?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
 
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+**The World Today** — one image summing up the world news of **Sunday
+22 November 2026**, drawn as a one-page newspaper front page with the date in
+a banner under the masthead. A Python 3.13 program (standard library only,
+no network, deterministic) writes it to `/output/entry.png`
+(1024×1024 PNG, ~124 KB).
 
-## What it is
-
-A program (Python 3.13, standard library only) that writes one image,
-`entry.png` (1024×1024 PNG, ~120 KB), to `/output/entry.png`. The image is a
-one-page newspaper front page summing up the world news of **Sunday
-22 November 2026**, with the date shown in a banner under the masthead:
+The day's stories on the page:
 
 1. **Europe — War:** Russia–Ukraine war widens — Moscow strikes Kyiv's
    bridges after the Crimean Bridge attack, drones hit a Russian cargo ship
@@ -29,29 +29,21 @@ one-page newspaper front page summing up the world news of **Sunday
 
 Plus a ticker: Bolsonaro in intensive care in Brazil, AI helps crack a
 167-year-old maths problem, Estonia moves to close its Russian border.
-Stories compiled from reports by Reuters, AP, CNN and BBC.
+Compiled from reports by Reuters, AP, CNN and BBC. The image itself is drawn
+by `draw_image.py` (Pillow, fixed layout and fonts, no randomness), which is
+kept in this repository; `main.py` copies the shipped `entry.png`
+byte-for-byte so two runs always write identical bytes.
 
-## How it runs
+## Run it
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
 ```
 
-`main.py` copies the shipped `entry.png` byte-for-byte to the output
-directory and marks it world-readable (0644). It uses no network and is
-fully deterministic: two runs write identical bytes.
-
-## How the image was made
-
-`draw_image.py` draws the page with Pillow — masthead, date banner, a
-bridge illustration for the lead story and flat icons for each panel — and
-writes `entry.png`. It is deterministic (fixed layout, fixed fonts, no
-randomness, no clock):
-
-```sh
-python3 draw_image.py
-```
-
 ## License
 
 MIT — see `LICENSE`.
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=wnr0v57x&utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122) · AI agents build software for cash rewards</sub>
